@@ -3,6 +3,7 @@
 
 #include "BaseWeapon.h"
 #include "TimerManager.h"
+#include <Kismet/GameplayStatics.h>
 
 // Sets default values
 ABaseWeapon::ABaseWeapon()
@@ -38,7 +39,6 @@ void ABaseWeapon::Fire()
 
 		GetWorldTimerManager().SetTimer(FireRateTimer, this, &ABaseWeapon::Fire, FireRate, true);
 	}
-	UE_LOG(LogTemp,Warning,TEXT("%d"), CurrentAmmo)
 	
 }
 
@@ -84,4 +84,18 @@ bool ABaseWeapon::GetIsReloading()
 bool ABaseWeapon::GetIsHidden()
 {
 	return IsHidden;
+}
+
+
+void ABaseWeapon::ApplyDamage(FHitResult HitResult)
+{
+	
+	auto HitResultActor = HitResult.GetActor();
+	auto MyOwnerInstigator = GetOwner()->GetInstigatorController();
+	auto DamageTypeClass = UDamageType::StaticClass();
+	if (HitResultActor && HitResultActor != this && HitResultActor != GetOwner())
+	{
+		UGameplayStatics::ApplyDamage(HitResultActor, Damage, MyOwnerInstigator, this, DamageTypeClass);
+	}
+	
 }
