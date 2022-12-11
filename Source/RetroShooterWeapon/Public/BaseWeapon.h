@@ -45,6 +45,7 @@ public:
 	virtual bool GetIsReloading();
 	bool GetIsHidden();
 	void DisableActor(bool toHide,bool SetTickEnable);
+	void ApplyDamage(FHitResult HitResult);
 #pragma endregion
 
 protected:
