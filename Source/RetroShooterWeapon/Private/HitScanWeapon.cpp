@@ -20,8 +20,12 @@ void AHitScanWeapon::Fire()
 	GetWorld()->LineTraceSingleByChannel(HitResult, LineStart, EndLine * WeaponRange + LineStart, ECollisionChannel::ECC_Visibility);
 	if (HitResult.GetActor())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("%s"), *HitResult.GetActor()->GetActorNameOrLabel())
+		ApplyDamage(HitResult);
 	}
 	CurrentAmmo--;
 }
+
+
+
+
 
