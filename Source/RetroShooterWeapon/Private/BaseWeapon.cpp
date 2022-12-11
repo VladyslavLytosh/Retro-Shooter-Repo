@@ -96,9 +96,6 @@ void ABaseWeapon::ApplyDamage(FHitResult HitResult)
 	if (HitResultActor && HitResultActor != this && HitResultActor != GetOwner())
 	{
 		UGameplayStatics::ApplyDamage(HitResultActor, Damage, MyOwnerInstigator, this, DamageTypeClass);
-
-		//UE_LOG(LogTemp, Warning, TEXT("%s"), *HitResult.GetActor()->GetActorNameOrLabel())
-		UE_LOG(LogTemp, Warning, TEXT("Weapon damage is %f"), Damage)
 	}
 	
 }
