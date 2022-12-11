@@ -32,3 +32,9 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 }
 
+
+void ABaseCharacter::HandleDestruction()
+{
+	UE_LOG(LogTemp,Warning, TEXT("BAZA"))
+	Destroy();
+}

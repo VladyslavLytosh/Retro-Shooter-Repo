@@ -13,5 +13,8 @@ UCLASS()
 class RETROSHOOTERCORE_API ARetroShooterGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-	
+
+public:
+	void ActorDied(AActor* DeadActor);
+
 };
