@@ -2,4 +2,14 @@
 
 
 #include "RetroShooterGameMode.h"
+#include "BaseCharacter.h"
 
+void ARetroShooterGameMode::ActorDied(AActor* DeadActor)
+{
+	ABaseCharacter* Character = Cast<ABaseCharacter>(DeadActor);
+	if (Character)
+	{
+		Character->HandleDestruction();
+	}
+	
+}
